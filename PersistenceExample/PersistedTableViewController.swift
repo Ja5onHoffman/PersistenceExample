@@ -20,22 +20,20 @@ class PersistedTableViewController: UITableViewController {
         println("viewDidLoad")
     }
     
+    
     override func viewWillAppear(animated: Bool) {
-        let path = store.documentsDirectory()
         if let ar = store.allStuff() as? [Stuff] {
             self.stuffArray = ar
         }
+        
+        // Update tableview when new item is added
         self.tableView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        // Return number of items in stuffArray
         return self.stuffArray.count
     }
 
